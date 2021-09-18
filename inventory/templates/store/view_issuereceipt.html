@@ -1,0 +1,80 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Create goods received{% endblock title %}
+
+{% block content %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Goods Received Note</title>
+    <style type="text/css">
+  
+  table, th, tbody {
+
+            /* width: 100%;
+             margin: 5px;  */
+            border: 1px solid black;
+            padding: 8px;
+            border-collapse: collapse;
+        }
+        /* .td1 {border: 0;}  */
+        
+        b {
+
+            font-size:12px;
+        }
+td:nth-child(even) {
+  background-color: #dddddd;
+}
+        </style>
+        </head>
+        <body>
+<!-- <h3 style="text-align: right;">FM/QMS/16      Version 2: October  2015    </h3> -->
+            <br>
+            <p></p>
+            <br>
+        <!-- <table >
+            <tr>
+                <td style="border-color:#ffffff;"> <img src="http://brti.co.zw/wp-content/uploads/2020/12/brti.png" width="60" height="60"> </td>
+
+                <td style="padding: 8px; width: 80%; text-align: center;"> <b>Biomedical Research and Training Institute</b> </td>
+                <td style="border-color:#ffffff;"> <img src="http://brti.co.zw/wp-content/uploads/2020/12/brti.png" width="60" height="60"> </td>
+            </tr>
+        </table> -->
+
+<h3 style="text-align: center; margin-bottom: -10px; margin-top:15px;">Goods Received Note Records </h3>
+<br>
+<p></p>
+<br>
+    <body>
+        <table style="width: 100%">
+            <thead>
+                <th style="width: 20%;">Site Name</th>
+                <th style="width: 15%;">Date</th>
+                <th style="width: 9%;">Request Description</th>
+                <th style="width: 3%;">Unit</th>
+                <th style="width: 3%;">Quantity</th>
+                <th style="width: 20%;">Approved By</th>
+                <th style="width: 10%;">Issued By</th>
+                <th style="width: 10%;">Destination</th>
+                <th style="width: 10%;">Comments</th>
+            </thead>
+
+            {% for x in all_objects %}
+            <tbody>
+                <td>{{x.site_name}}</td>
+                <td>{{x.date}}</td>
+                <td>{{x.request_description}}</td>
+                <td>{{x.unit}}</td>
+                <td>{{x.quantity}}</td>
+                <td>{{x.approved_by}}</td>
+                <td>{{x.issued_by}}</td>
+                <td>{{x.destination}}</td>
+                <td>{{x.comments}}</td>
+            </tbody>
+            {% endfor %}
+        </table>
+    </body>
+</html>
+{% endblock content %}

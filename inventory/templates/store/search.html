@@ -1,0 +1,73 @@
+{% extends 'base/base.html' %}
+{% block title %}Search Results{% endblock title %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+  
+        table, th, tbody {
+      
+                  /* width: 100%;
+                   margin: 5px;  */
+                  border: 1px solid black;
+                  padding: 8px;
+                  border-collapse: collapse;
+              }
+              /* .td1 {border: 0;}  */
+              
+              b {
+      
+                  font-size:12px;
+              }
+      td:nth-child(even) {
+        background-color: #dddddd;
+      }
+              </style>
+</head>
+<body>
+    {% if searched %}
+        <h1>Search Results for {{searched}}</h1>
+        <br>
+        <table style="width: 100%">
+            <thead>
+                <th style="width: 10%;">Date</th>
+                <th style="width: 15%;">Customer name</th>
+                <th style="width: 10%;">Category</th>
+                <th style="width: 10%;">Subcategory</th>
+                <th style="width: 5%;">Quantity</th>
+                <th style="width: 15%;">Description</th>
+                <th style="width: 15%;">Comments</th>
+                <th style="width: 5%;">Unit Cost</th>
+                <th style="width: 15%;">Received By</th>
+            </thead>
+
+            {% for x in venues %}
+            <tbody>
+                <td>{{x.date}}</td>
+                <td>{{x.customer}}</td>
+                <td>{{x.category}}</td>
+                <td>{{x.subcategory}}</td>
+                <td>{{x.quantity}}</td>
+                <td>{{x.description}}</td>
+                <td>{{x.comments}}</td>
+                <td>{{x.unit_cost}}</td>
+                <td>{{x.received_by}}</td>
+            </tbody>
+            {% endfor %}
+
+        </table>
+     
+    {% else %}
+        <h1>Hey Dofo hapana zvawaita tangidza</h1>
+    {% endif %}
+     
+</body>
+</html>
+
+{% endblock %}
