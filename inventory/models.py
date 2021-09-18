@@ -51,7 +51,7 @@ class Goods_received_note(models.Model):
 
 class Issue_receipt_voucher(models.Model):
     site_name=models.CharField(max_length=300, default="Site Name")
-    date= models.DateField(blank=True, null=True)
+    date= models.DateField( default=datetime.datetime.now())
 
     stores_request_no = models.CharField(max_length=300, default="Stores Req. No")
     request_description = models.CharField(max_length=300, default="Request Description")

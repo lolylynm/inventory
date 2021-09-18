@@ -62,7 +62,8 @@ formset = Goods_received_noteFormSet(queryset=Goods_received_note.objects.all())
 
 class Issue_receipt_voucherForm(forms.ModelForm):
     site_name=forms.CharField(label='Site Name', max_length=300)
-    date= forms.DateField(label='Date')
+    date= forms.DateField(widget=forms.TextInput(attrs={'readonly':'readonly'}),label='Date',
+             initial=datetime.datetime.now())
 
     stores_request_no = forms.CharField(label='Stores Req. No', max_length=300)
     request_description = forms.CharField(label='Request Description', max_length=300)
