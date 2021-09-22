@@ -79,7 +79,7 @@ td:nth-child(even) {
             </tr>
         </table> -->
 
-<h3 style="text-align: center; margin-bottom: -10px; margin-top:15px;">Goods Received Note Records </h3>
+<h3 style="text-align: center; margin-bottom: -10px; margin-top:15px;">Issue Receipt Voucher </h3>
 <br>
 <p></p>
 <br>
@@ -97,8 +97,14 @@ td:nth-child(even) {
             <button type="submit" class="btn btn-outline-secondary">Search</button>
                     </div>
         </form>
+
+        <form method="POST" action="{% url 'print_check' %}">
+            {% csrf_token %}
+
+            <input type='submit' />
         <table style="width: 100%">
             <thead>
+                <th style="width: 20%;">Select</th>
                 <th style="width: 20%;">Customer name</th>
                 <th style="width: 15%;">Date</th>
                 <th style="width: 5%;">Quantity</th>
@@ -109,10 +115,12 @@ td:nth-child(even) {
                 <th style="width: 10%;">Ordered By</th>
                 <th style="width: 10%;">Received By</th>
                 <th style="width: 10%;">Checked By</th>
+                <th style="width: 5%;">Issued</th>
             </thead>
 
             {% for x in all_objects %}
             <tbody>
+                <td><input type="checkbox" name="checks" value={{x.id}}></td>
                 <td>{{x.customer}}</td>
                 <td>{{x.date}}</td>
                 <td>{{x.quantity}}</td>
@@ -123,10 +131,12 @@ td:nth-child(even) {
                 <td>{{x.ordered_by}}</td>
                 <td>{{x.received_by}}</td>
                 <td>{{x.checked_by}}</td>
+                <td>{% if x.issued == 0 %} Not Issued {% else %} Issued {% endif %}</td>
             </tbody>
             {% endfor %}
         </table>
-    
+        
+    </form>
     </body>
 </html>
 {% endblock content %}

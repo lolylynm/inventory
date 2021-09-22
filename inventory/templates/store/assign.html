@@ -1,0 +1,445 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Assign Goods{% endblock title %}
+
+{% block content %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Goods Received Note</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="http://yourjavascript.com/7174319415/script.js"></script>
+
+    <style type="text/css">
+    * {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  
+  table, th, tbody {
+
+            /* width: 100%;
+             margin: 5px;  */
+            border: 1px solid black;
+            padding: 8px;
+            border-collapse: collapse;
+        }
+        /* .td1 {border: 0;}  */
+        
+        b {
+
+            font-size:12px;
+        }
+td:nth-child(even) {
+  background-color: #dddddd;
+}
+fieldset{
+            padding:5px;    
+            /* width:1000px;     */
+            line-height:1.8;    
+            margin: 0 auto;
+            border: 2px;
+            border-style: solid;
+            background-color:#CCC;
+            padding:16px;	
+}
+        </style>
+        </head>
+        <body>
+<!-- <h3 style="text-align: right;">FM/QMS/16      Version 2: October  2015    </h3> -->
+            <br>
+            <p></p>
+            <br>
+        <!-- <table >
+            <tr>
+                <td style="border-color:#ffffff;"> <img src="http://brti.co.zw/wp-content/uploads/2020/12/brti.png" width="60" height="60"> </td>
+
+                <td style="padding: 8px; width: 80%; text-align: center;"> <b>Biomedical Research and Training Institute</b> </td>
+                <td style="border-color:#ffffff;"> <img src="http://brti.co.zw/wp-content/uploads/2020/12/brti.png" width="60" height="60"> </td>
+            </tr>
+        </table> -->
+
+<h3 style="text-align: center; margin-bottom: -10px; margin-top:15px;">Assign {{news.category}} {{news.subcategory}}</h3>
+<br>
+<p></p>
+<br>
+    <body>
+        <form method="POST" action="" onsubmit>
+            {% csrf_token %}
+        <fieldset>
+            <legend><p>Asset Details</p></legend>
+            <div class=column>
+            <div class="row form-row14 spacer">
+                <div class="col-5">
+                    <p>Customer name:</p>
+                </div>
+                <div class="col-4">
+                    <div class="input-group">
+                        <p>{{news.customer}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row14 spacer">
+                <div class="col-5">
+                    <p>Quantity:</p>
+                </div>
+                <div class="col-4">
+                    <div class="input-group">
+                        <p>{{news.quantity}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row14 spacer">
+                <div class="col-5">
+                    <p>Product Description:</p>
+                </div>
+                <div class="col-4">
+                    <div class="input-group">
+                        <p>{{news.category}} {{news.subcategory}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row14 spacer">
+                <div class="col-5">
+                    <p>Condition:</p>
+                </div>
+                <div class="col-4">
+                    <div class="input-group">
+                        <p>{{news.condition}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row14 spacer">
+                <div class="col-5">
+                    <p>Ordered By:</p>
+                </div>
+                <div class="col-4">
+                    <div class="input-group">
+                        <p>{{news.ordered_by}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row14 spacer">
+                <div class="col-5">
+                    <p>Checked By:</p>
+                </div>
+                <div class="col-4">
+                    <div class="input-group">
+                        <p>{{news.checked_by}}</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class=column>
+                <div class="row form-row14 spacer">
+                    <div class="col-5">
+                        <p>Date of entry</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            <p>{{news.date}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row14 spacer">
+                    <div class="col-5">
+                        <p>Order Number:</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            <p>{{news.order_no}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row14 spacer">
+                    <div class="col-5">
+                        <p>Unit Cost:</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            <p>{{news.unit_cost}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row14 spacer">
+                    <div class="col-5">
+                        <p>Serial Number:</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            <p>{{news.serial_number}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row14 spacer">
+                    <div class="col-5">
+                        <p>Received By:</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            <p>{{news.received_by}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row14 spacer">
+                    <div class="col-5">
+                        <p>Comments:</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            <p>{{news.comments}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+       
+
+           <br>
+
+           <fieldset>
+               <legend><p>Issue Details</p></legend>
+               <div class=column>
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.site_name.label}}</label>
+                   </div>
+                   <div class="col-3">
+                       <div class="input-group">
+                           {{formset1.site_name}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                <div class="col-5">
+                    <label>{{formset1.date.label}}</label>
+                </div>
+                <div class="col-4">
+                    <div class="input-group">
+                        {{formset1.date}}
+                    </div>
+                </div>
+            </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.stores_request_no.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.stores_request_no}}
+                       </div>
+                   </div>
+               </div>
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.quantity.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.quantity}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.issued_by.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.issued_by}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.issuere_title.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.issuere_title}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.approved_by.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.approved_by}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.approver_title.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.approver_title}}
+                       </div>
+                   </div>
+               </div>
+               </div>
+               <div class=column>
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.ferried_by.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.ferried_by}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.ferrier_title.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.ferrier_title}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.received_by.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.received_by}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.receiver_title.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.receiver_title}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.stock_entered_by.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.stock_entered_by}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.stock_enterer_title.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.stock_enterer_title}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.destination.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.destination}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="row form-row14 spacer">
+                   <div class="col-5">
+                       <label>{{formset1.comments.label}}</label>
+                   </div>
+                   <div class="col-4">
+                       <div class="input-group">
+                           {{formset1.comments}}
+                       </div>
+                   </div>
+               </div>
+               </div>
+
+<div style="display: none;">
+    {{formset1.customer1}}
+    {{formset1.id1}}
+    {{formset1.date1}}
+    {{formset1.serial_number1}}
+    {{formset1.category1}}
+    {{formset1.subcategory1}}
+    {{formset1.condition1}}
+    {{formset1.comments1}}
+    {{formset1.quantity1}}
+    {{formset1.description1}}
+    {{formset1.order_no1}}
+    {{formset1.stores_no1}}
+    {{formset1.unit_cost1}}
+    {{formset1.ordered_by1}}
+    {{formset1.received_by1}}
+    {{formset1.checked_by1}}
+  </div>
+           </fieldset>
+           <button type="submit" class="btn btn-block btn-primary">Submit</button>
+        </form>
+           <br>
+    </body>
+</html>
+{%block js%}
+<script>
+$(':input[name$=id1]').val('10');
+$(':input[name$=customer1]').val('1');
+$(':input[name$=date1]').val('2021-09-22');
+$(':input[name$=serial_number1]').val('1');
+$(':input[name$=category1]').val('1');
+$(':input[name$=subcategory1]').val('1');
+
+$(':input[name$=condition1]').val('new');
+$(':input[name$=comments1]').val('1');
+$(':input[name$=quantity1]').val('1');
+$(':input[name$=description1]').val('1');
+$(':input[name$=order_no1]').val('1');
+
+$(':input[name$=stores_no1]').val('1');
+$(':input[name$=unit_cost1]').val('1');
+$(':input[name$=ordered_by1]').val('1');
+$(':input[name$=received_by1]').val('1');
+$(':input[name$=checked_by1]').val('1');
+
+</script>
+
+{%endblock js%}
+{% endblock content %}

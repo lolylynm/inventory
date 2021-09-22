@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Goods Received Note</title>
+    <style type="text/css">
+table, th {
+
+            width: 100%;
+            margin: 95%;
+            border: 1px solid black;
+        }
+        .td1 {border: 0;}
+
+        #section {
+
+            border: 0px;
+        }
+
+        hr.new1 {
+            border-top: 3px dotted;
+        }
+        b {
+
+            font-size:10px;
+        }
+.row {
+  display: flex;
+  margin-left:-5px;
+  margin-right:-5px;
+}
+.column {
+  flex: 50%;
+  padding: 5px;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+        </style>
+        </head>
+        <body>
+<h3 style="text-align: right;">FM/QMS/16      Version 2: October  2015    </h3>
+
+        <table >
+            <tr style="text-align: right;">
+                <td style="border-color:#ffffff;"> <img src="http://brti.co.zw/wp-content/uploads/2020/12/brti.png" width="50" height="50"> </td>
+
+                <td style="padding: 8px; width: 80%; text-align: center;"> <b>Biomedical Research and Training Institute</b> </td>
+                <td style="border-color:#ffffff;"> <img src="http://brti.co.zw/wp-content/uploads/2020/12/brti.png" width="50" height="50"> </td>
+            </tr>
+        </table>
+
+<h3 style="text-align: center; margin-bottom: -10px; margin-top:15px;">Goods Received Note </h3>
+
+        
+    <body>
+        {% for k,v in data.items %}
+        {%if k == '1' %}
+        <p><b>Customer Name: &nbsp;</b>{{v.customer}}<b></b></p>
+        <p><b>Date: &nbsp;</b>{{v.date}}<b></b></p>
+        {% endif %}
+        {% endfor %}
+        <table style="margin-top: 5%; margin-bottom: 1%; padding-top: 10px;">
+        
+            <tr>
+                <th>QTY</th>
+                <th>Description</th>
+                <th>Order No.</th>
+                <th>Stores No.</th>
+                <th>Unit Cost</th>
+            </tr>
+            {% for w in data.values %}
+            <tr>
+                <td>{{w.quantity}}</td>
+                <td>{{w.description}}</td>
+                <td>{{w.order_no}}</td>
+                <td>{{w.stores_no}}</td>
+                <td>{{w.unit_cost}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    <br>
+    <br>
+    <p></p>
+
+    <table style="border:0px; margin-top:5px;">
+
+        <tbody>
+        {% for k,v in data.items %}
+        {%if k == '1' %}
+            <tr>
+                <td><b>Ordered By:</b> {{v.ordered_by}}</td>
+                <td><b>Signature...............................................................<b></td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td><b>Received By:</b> {{v.received_by}}<b></td>
+                <td><b>Signature...............................................................</b></td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td><b>Checked By:</b> {{v.checked_by}}<b></b></td>
+                <td><b>Signature...............................................................<b></td>
+            </tr>
+        </tbody>
+        {% endif %}
+        {% endfor %}
+    </table>
+
+</table>
+ </body>
+</html>

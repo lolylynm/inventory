@@ -294,7 +294,9 @@ fieldset{
                 <select id="item1">
                 </select>
                  -->
-             
+                 <div style="display: none;">
+                    {{formset.issued}}
+                </div>
             </fieldset>  
             <button type="submit" class="btn btn-block btn-primary" onclick="name()">Submit</button>
         </form>
@@ -304,7 +306,15 @@ fieldset{
 </html>
 {% endblock content %}
 
+{%block js%}
+<script>
+$(':input[name$=issued]').val('0');
+</script>
+
+{%endblock js%}
+
 {% block custom_js %}
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>
     $( function() {

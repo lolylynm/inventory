@@ -7,64 +7,66 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>Issue Receipt Voucher</title>
+        <title>Goods Received Note</title>
+        <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="http://yourjavascript.com/7174319415/script.js"></script>
+      
+                <script>
+                    $(document).ready(function(){
+                         $('select#product1').change(function () {
+                             var optionSelected = $(this).find("option:selected");
+                             var valueSelected  = optionSelected.val();
+                              var product_name   = optionSelected.text();
+                              $(':input[name$=category]').val(product_name);
+                             
+                              data = {'cnt' : product_name };
+                                ajax('/getdetails',data,function(result){
+        
+                                        console.log(result);
+                                        alert(result['0']['name']+product_name)
+                                        $("#item1 option").remove();
+                                        for (var i = result.length - 1; i >= 0; i--) {
+                                            $("#item1").append('<option>'+ result[i].name +'</option>');
+                                        };
+        
+        
+                                    });
+    
+                            $('select#item1').change(function () {
+                                var optionSelected = $(this).find("option:selected");
+                                var valueSelected  = optionSelected.val();
+                                var product_name   = optionSelected.text();
+                                alert(product_name);
+                                $(':input[name$=subcategory]').val(product_name);
+                            });
+                          });
+                    });
+                </script>
     <style type="text/css">
   
-  table, th {
+  table, th, tbody {
 
             /* width: 100%;
              margin: 5px;  */
             border: 1px solid black;
+            padding: 8px;
+            border-collapse: collapse;
         }
-        .td1 {border: 0;} 
-
-       #section {
-
-            border: 0px;
-        }
-
-        hr.new1 {
-            border-top: 3px dotted;
-        }
+        /* .td1 {border: 0;}  */
         
         b {
 
             font-size:12px;
         }
-.row {
-  display: flex;
-     margin-left:-5px;
-     margin-right:-5px;
+td:nth-child(even) {
+  background-color: #dddddd;
 }
-.column {
-  flex: 50%;
-  padding: 5px;
-}
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}  
-td {
-  padding:0;
-}
-input {
-  display:block;
-  width:100%;
-}
-fieldset{
-            padding:5px;    
-            /* width:1000px;     */
-            line-height:1.8;    
-            margin: 0 auto;
-            border: 2px;
-            border-style: solid;
-            background-color:#CCC;
-            padding:16px;	
-}
-
         </style>
         </head>
         <body>
-<h3 style="text-align: right;">FM/QMS/16      Version 2: October  2015    </h3>
+<!-- <h3 style="text-align: right;">FM/QMS/16      Version 2: October  2015    </h3> -->
             <br>
             <p></p>
             <br>
@@ -77,292 +79,64 @@ fieldset{
             </tr>
         </table> -->
 
-<h3 style="text-align: center; margin-bottom: -10px; margin-top:15px;">Issue Receipt Voucher</h3>
+<h3 style="text-align: center; margin-bottom: -10px; margin-top:15px;">Goods Received Note Records </h3>
 <br>
 <p></p>
 <br>
-    <body>
-        <form>
 
+    <body>
+        
+        <form method="POST" action="{% url 'search_product' %}">
             {% csrf_token %}
 
-            <fieldset>
-                <legend><p>Enter </p></legend>
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.site_name.label}}</label>
+            
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+            <input class="form-control me-2" type="search" placeholder="Search"
+            aria-label="Search" name="searched">
+            <button type="submit" class="btn btn-outline-secondary">Search</button>
                     </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.site_name}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.date.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.date}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.stores_request_no.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.stores_request_no}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.request_description.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.request_description}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.unit.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.unit}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.quantity.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.quantity}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.issued_by.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.issued_by}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.issuere_title.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.issuere_title}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.approved_by.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.approved_by}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.approver_title.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.approver_title}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.ferried_by.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.ferried_by}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.ferrier_title.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.ferrier_title}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.received_by.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.received_by}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.receiver_title.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.receiver_title}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.stock_entered_by.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.stock_entered_by}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.stock_enterer_title.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.stock_enterer_title}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.destination.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.destination}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row form-row14 spacer">
-                    <div class="col-8">
-                        <label>{{formset1.comments.label}}</label>
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group">
-                            {{formset1.comments}}
-                        </div>
-                    </div>
-                </div>
-            </fieldset>  
-
         </form>
 
-</table>
- </body>
+        <form method="POST" action="{% url 'issueprint_check' %}">
+            {% csrf_token %}
+
+            <input type='submit' />
+        <table style="width: 100%">
+            <thead>
+                <th style="width: 20%;">Select</th>
+                <th style="width: 20%;">Customer name</th>
+                <th style="width: 15%;">Date</th>
+                <th style="width: 5%;">Quantity</th>
+                <th style="width: 20%;">Description</th>
+                <th style="width: 5%;">Order Number</th>
+                <th style="width: 5%;">Category</th>
+                <th style="width: 10%;">Unit Cost</th>
+                <th style="width: 10%;">Ordered By</th>
+                <th style="width: 10%;">Received By</th>
+                <th style="width: 10%;">Checked By</th>
+                <th style="width: 5%;">Issued</th>
+            </thead>
+
+            {% for x in all_objects %}
+            <tbody>
+                <td><input type="checkbox" name="checks" value={{x.id}}></td>
+                <td>{{x.customer}}</td>
+                <td>{{x.date}}</td>
+                <td>{{x.quantity}}</td>
+                <td>{{x.description}}</td>
+                <td>{{x.order_no}}</td>
+                <td>{{x.category}}</td>
+                <td>{{x.unit_cost}}</td>
+                <td>{{x.ordered_by}}</td>
+                <td>{{x.received_by}}</td>
+                <td>{{x.checked_by}}</td>
+                <td>{% if x.issued == 0 %} Not Issued {% else %} Issued {% endif %}</td>
+            </tbody>
+            {% endfor %}
+        </table>
+        
+    </form>
+    </body>
 </html>
 {% endblock content %}
-
-{% block custom_js %}
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>
-    $( function() {
-      $( "#datepicker" ).datepicker();
-    } );
-    </script>
-
-
-// <!-- 4 clone14 -->
-<script type="text/javascript">
-    function update14ElementIndex(el, prefix, ndx) {
-        var id_regex = new RegExp('(' + prefix + '-\\d+)');
-        var replacement = prefix + '-' + ndx;
-        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
-        if (el.id) el.id = el.id.replace(id_regex, replacement);
-        if (el.name) el.name = el.name.replace(id_regex, replacement);
-    }
-    function cloneMore14(selector, prefix) {
-        var newElement = $(selector).clone(true);
-        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
-        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
-            var name = $(this).attr('name')
-            if(name) {
-                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
-                var id = 'id_' + name;
-                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
-            }
-        });
-        newElement.find('label').each(function() {
-            var forValue = $(this).attr('for');
-            if (forValue) {
-              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
-              $(this).attr({'for': forValue});
-            }
-        });
-        total++;
-        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
-        $(selector).after(newElement);
-        var conditionRow = $('.form-row14:not(:last)');
-        conditionRow.find('.btn14.add-form-row14')
-        .removeClass('btn-success').addClass('btn-danger')
-        .removeClass('add-form-row14').addClass('remove-form-row14')
-        .html('-');
-        return false;
-    }
-    function deleteForm14(prefix, btn) {
-        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
-        if (total > 1){
-            btn.closest('.form-row14').remove();
-            var forms = $('.form-row14');
-            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
-            for (var i=0, formCount=forms.length; i<formCount; i++) {
-                $(forms.get(i)).find(':input').each(function() {
-                    updateElementIndex(this, prefix, i);
-                });
-            }
-        }
-        return false;
-    }
-    $(document).on('click', '.add-form-row14', function(e){
-        e.preventDefault();
-        cloneMore14('.form-row14:last', 'form');
-        return false;
-    });
-    $(document).on('click', '.remove-form-row14', function(e){
-        e.preventDefault();
-        deleteForm14('form', $(this));
-        return false;
-    });
-    </script>
-    {% endblock %}

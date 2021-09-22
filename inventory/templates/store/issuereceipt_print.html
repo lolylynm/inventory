@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Issue Receipt Voucher</title>
+    <style type="text/css">
+table, th {
+
+            width: 100%;
+            margin: 95%;
+            border: 1px solid black;
+        }
+        .td1 {border: 0;}
+
+        #section {
+
+            border: 0px;
+        }
+
+        hr.new1 {
+            border-top: 3px dotted;
+        }
+        b {
+
+            font-size:10px;
+        }
+.row {
+  display: flex;
+  margin-left:-5px;
+  margin-right:-5px;
+}
+.column {
+  flex: 50%;
+  padding: 5px;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+        </style>
+        </head>
+        <body>
+<h3 style="text-align: right;">FM/QMS/236     Version 2: October  2015    </h3>
+
+        <table >
+            <tr style="text-align: right;">
+                <td style="border-color:#ffffff;"> <img src="http://brti.co.zw/wp-content/uploads/2020/12/brti.png" width="50" height="50"> </td>
+                <td style="padding: 8px; width: 80%; text-align: center;"> <b>Biomedical Research and Training Institute</b> </td>
+                <td style="border-color:#ffffff;"> <img src="http://brti.co.zw/wp-content/uploads/2020/12/brti.png" width="50" height="50"> </td>
+            </tr>
+        </table>
+
+<h3 style="text-align: center; margin-bottom: -10px; margin-top:15px;">Issue and Receipt Voucher </h3>
+
+    <body>
+        {% for k,v in data.items %}
+        {%if k == '1' %}
+        <p><b>Site Name: &nbsp;</b>{{v.site_name}}<b></b></p>
+        <p><b>Date: &nbsp;</b>{{v.date}}<b></b></p>
+        {% endif %}
+        {% endfor %}
+
+        <table style="margin-top: 5%; margin-bottom: 1%; padding-top: 10px;">
+
+            <tr>
+                <th>Store Req. Number</th>
+                <th>Request Description</th>
+                <th>Unit</th>
+                <th>Quantity</th>
+            </tr>
+
+            <tr>
+                <td>{{stores_request_no}}</td>
+                <td>{{request_description}}</td>
+                <td>{{unit}}</td>
+                <td>{{quantity}}</td>
+            </tr>
+
+        </table>
+
+    <br>
+    <br>
+    <p></p>
+
+    <table style="border:0px; margin-top:5px;">
+        <tbody>
+            <tr>
+                <td><b>Issued By:</b> {{issued_by}}</td>
+                <td><b>Issuer Title:</b> {{issuere_title}}</td>
+                <td><b>Signature...............................................................<b></td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td><b>Approved By:</b> {{approved_by}}<b></td>
+                <td><b>Approver Title:</b> {{approver_title}}</td>
+                <td><b>Signature...............................................................</b></td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td><b>Ferried By:</b> {{ferried_by}}<b></b></td>
+                <td><b>Ferrier Title:</b> {{ferrier_title}}</td>
+                <td><b>Signature...............................................................<b></td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td><b>Received By:</b> {{received_by}}</td>
+                <td><b>Receiver Title:</b> {{receiver_title}}</td>
+                <td><b>Signature...............................................................<b></td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td><b>Stock Entered By:</b> {{stock_entered_by}}<b></td>
+                <td><b>Stock Enterer Title:</b> {{stock_enterer_title}}</td>
+                <td><b>Signature...............................................................</b></td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td><b>Destination:</b> {{destination}}<b></b></td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td><b>Comments:</b> {{comments}}<b></b></td>
+            </tr>
+
+        </tbody>
+
+
+
+    </table>
+
+</table>
+ </body>
+</html>

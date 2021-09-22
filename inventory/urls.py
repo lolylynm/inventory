@@ -24,8 +24,17 @@ urlpatterns = [
     path('goodsreceived', views.goodsreceived, name='goodsreceived'),
     path('view_goodsreceived', views.view_goodsreceived, name='view_goodsreceived'),
     path('create_issuereceipt', views.create_issuereceipt, name='create_issuereceipt'),
-    path('view_issuereceipt', views.view_issuereceipt, name='view_issuereceipt'),
+    path('search_issuereceipt', views.search_issuereceipt, name='search_issuereceipt'),
     url(r'^getdetails/', views.getdetails),
     url(r'^get_details/', views.getdetails),
     path('search_product', views.search_product, name='search_product'),
+    path('assign_html/<str:pk>/', views.assign_html, name='assign_html'),
+    path('print_check', views.print_check, name='print_check'),
+    path('issueprint_check', views.issueprint_check, name='issueprint_check'),
+    
+    # path('search_issue', views.search_product, name='search_issue'),
+    path('assign_html', views.assign_html, name='assign_html'),
+
+    
+
 ]

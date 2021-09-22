@@ -28,7 +28,7 @@ class Goods_received_note(models.Model):
     ]
 
     customer=models.CharField(max_length=300, default="Customer Name")
-    date= models.DateField( default=datetime.datetime.now())
+    date= models.DateField(default=datetime.datetime.now())
 
     serial_number = models.CharField( max_length=400, default="Serial Number")
     category = models.CharField( max_length=400, default="category")
@@ -36,7 +36,7 @@ class Goods_received_note(models.Model):
     condition = models.CharField( max_length=400, default="condition", choices=condition_choices)
     comments = models.TextField( max_length=400, default="comment")
 
-    quantity = models.IntegerField( max_length=400, default="Quantity")
+    quantity = models.IntegerField(default="Quantity")
     description = models.CharField(max_length=300, default="Description")
     order_no = models.CharField(max_length=200, default="Order No.")
     stores_no = models.CharField(max_length=300, default="Stores No")
@@ -46,17 +46,18 @@ class Goods_received_note(models.Model):
     received_by=models.CharField(max_length=300, default="Received By")
     checked_by = models.CharField(max_length=300, default="Checked by")
 
+    issued = models.IntegerField(default="0")
     def __str__(self):
         return self.customer
 
 class Issue_receipt_voucher(models.Model):
+    
+    id1=models.ForeignKey('Goods_received_note', on_delete = models.CASCADE,null=True)
     site_name=models.CharField(max_length=300, default="Site Name")
-    date= models.DateField( default=datetime.datetime.now())
+    date= models.DateField(default=datetime.datetime.now())
 
     stores_request_no = models.CharField(max_length=300, default="Stores Req. No")
-    request_description = models.CharField(max_length=300, default="Request Description")
-    unit=models.CharField(max_length=300, default="Unit")
-    quantity = models.IntegerField(max_length=400, default="Quantity")
+    quantity = models.IntegerField(default="Quantity")
 
     issued_by=models.CharField(max_length=300, default="Issued By")
     issuere_title=models.CharField(max_length=300, default="Issuer Title")
@@ -71,6 +72,31 @@ class Issue_receipt_voucher(models.Model):
 
     destination = models.CharField(max_length=300, default="Destination")
     comments=models.TextField(max_length=300, default="Comments")
+
+    condition_choices = [
+        ('Fair', 'Fair'),
+        ('new', 'new'),
+        ('old', 'old')
+    ]
+
+    customer1=models.CharField(max_length=300, default="Customer Name")
+    date1= models.DateField(default=datetime.datetime.now())
+
+    serial_number1 = models.CharField( max_length=400, default="Serial Number")
+    category1 = models.CharField( max_length=400, default="category")
+    subcategory1 = models.CharField( max_length=400, default="subcategory")
+    condition1 = models.CharField( max_length=400, default="condition", choices=condition_choices)
+    comments1 = models.TextField( max_length=400, default="comment")
+
+    quantity1 = models.IntegerField(default="Quantity")
+    description1 = models.CharField(max_length=300, default="Description")
+    order_no1 = models.CharField(max_length=200, default="Order No.")
+    stores_no1 = models.CharField(max_length=300, default="Stores No")
+    unit_cost1=models.CharField(max_length=300, default="Unit Cost'")
+
+    ordered_by1=models.CharField(max_length=300, default="Ordered By")
+    received_by1=models.CharField(max_length=300, default="Received By")
+    checked_by1= models.CharField(max_length=300, default="Checked by")
 
     def __str__(self):
         return self.site_name 
